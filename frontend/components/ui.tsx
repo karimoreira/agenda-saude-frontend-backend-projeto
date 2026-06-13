@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode } from "react";
+import { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes } from "react";
 
 export function Avatar({ name, size = 56 }: { name: string; size?: number }) {
   const initials = name
@@ -47,5 +47,54 @@ export function PrimaryButton({
     >
       {children}
     </button>
+  );
+}
+
+export function Button({ children, onClick, variant, className, ...props }: { children: ReactNode; onClick?: () => void; variant?: "primary" | "secondary"; className?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
+  const base = "px-4 py-2 rounded-xl font-semibold text-sm transition-colors";
+  const styles = variant === "primary"
+    ? "bg-brand text-white hover:bg-brand/90"
+    : variant === "secondary"
+    ? "bg-mist text-ink border border-line hover:bg-line"
+    : "bg-brand text-white hover:bg-brand/90";
+  return (
+    <button onClick={onClick} className={`${base} ${styles} ${className ?? ""}`} {...props}>
+      {children}
+    </button>
+  );
+}
+
+export function Input({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <input
+      className={`w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink outline-none focus:border-brand transition-colors ${className ?? ""}`}
+      {...props}
+    />
+  );
+}
+
+export function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
+    </svg>
+  );
+}
+
+export function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+export function CameraIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+      <circle cx="12" cy="13" r="4" />
+    </svg>
   );
 }

@@ -1,15 +1,18 @@
 export interface Doctor {
-  id: number;
+  id: string;
   name: string;
   specialty: string;
+  location: string;
   city: string;
+  availability: string;
   rating: number;
   reviews: number;
   price: number;
+  image?: string;
   crm: string;
-  telemedicine: boolean;
   bio: string;
   address: string;
+  telemedicine?: boolean;
 }
 
 export interface Slot {

@@ -1,13 +1,18 @@
 import { Doctor } from "@/types";
 
 export const SPECIALTIES = [
-  "Todas", "Cardiologia", "Dermatologia", "Psicologia",
-  "Ortopedia", "Pediatria", "Ginecologia",
+  "Todas",
+  "Cardiologia",
+  "Dermatologia",
+  "Psicologia",
+  "Ortopedia",
+  "Pediatria",
+  "Ginecologia",
 ] as const;
 
-import { Doctor } from "@/types";
+const cityFromLocation = (loc: string) => loc.split(",")[0].trim();
 
-export const doctors: Doctor[] = [
+const baseDoctors: Omit<Doctor, "city" | "crm" | "bio" | "address">[] = [
   {
     id: "1",
     name: "Dra. Marina Lopes",
@@ -75,3 +80,11 @@ export const doctors: Doctor[] = [
     image: "https://randomuser.me/api/portraits/men/6.jpg",
   },
 ];
+
+export const DOCTORS: Doctor[] = baseDoctors.map((d) => ({
+  ...d,
+  city: cityFromLocation(d.location),
+  crm: `${d.id.padStart(6, "0")}${d.specialty.slice(0, 2).toUpperCase()}`,
+  bio: `Médico(a) especialista em ${d.specialty} com vasta experiência no atendimento humanizado. Atende presencialmente e por telemedicina.`,
+  address: `${d.location.split(",")[0].trim()}, Centro`,
+}));
