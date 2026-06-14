@@ -5,7 +5,7 @@ export const formatBRL = (value: number): string =>
 
 export const filterDoctors = (doctors: Doctor[], { query, specialty }: SearchFilter): Doctor[] =>
   doctors.filter((d) => {
-    const matchesSpecialty = specialty === "Todas" || d.specialty === specialty;
+    const matchesSpecialty = !specialty || specialty === "Todas" || d.specialty === specialty;
     const q = query.trim().toLowerCase();
     const matchesQuery =
       !q ||

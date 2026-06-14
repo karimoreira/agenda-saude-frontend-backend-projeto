@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AgendaSaúde — Agende sua consulta",
+  title: "AgendaSaúde",
   description: "Encontre médicos e agende consultas em segundos.",
 };
 

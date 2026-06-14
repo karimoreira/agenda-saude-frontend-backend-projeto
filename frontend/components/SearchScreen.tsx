@@ -13,8 +13,9 @@ const specialties = [
   "Neurologia",
   "Oftalmologia",
   "Ortopedia",
-  "Pediatra",
-  "Psiquiatra",
+  "Pediatria",
+  "Psicologia",
+  "Psiquiatria",
   "Reumatologia",
   "Urologia",
 ];
@@ -30,7 +31,6 @@ export function SearchScreen({ onSelect }: { onSelect: (doctor: Doctor) => void 
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8">
-      {/* --- Filtros (Sidebar no Desktop) --- */}
       <aside className="lg:col-span-4 xl:col-span-3 p-6 bg-white rounded-lg shadow-lg h-fit">
         <h1 className="text-2xl font-bold text-ink">AgendaSaúde</h1>
         <p className="mt-2 text-ink/80">Encontre seu médico e agende em segundos</p>
@@ -67,7 +67,6 @@ export function SearchScreen({ onSelect }: { onSelect: (doctor: Doctor) => void 
         </div>
       </aside>
 
-      {/* --- Resultados (Conteúdo Principal) --- */}
       <main className="lg:col-span-8 xl:col-span-9 mt-8 lg:mt-0">
         <p className="text-ink/80">
           {results.length} profissionais encontrados

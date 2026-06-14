@@ -35,5 +35,5 @@ export interface DayOption {
 
 export type SearchFilter = {
   query: string;
-  specialty: string;
+  specialty: string | null;
 };

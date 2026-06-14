@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { Doctor } from "@/types";
 import { Button, CameraIcon, StarIcon } from "./ui";
 
@@ -16,19 +15,9 @@ export function DoctorCard({ doctor, onSelect }: Props) {
 
   return (
     <article className="flex flex-col sm:flex-row gap-6 p-6 bg-white rounded-lg shadow-lg">
-      {doctor.image ? (
-        <Image
-          src={doctor.image}
-          alt={`Foto de ${doctor.name}`}
-          width={100}
-          height={100}
-          className="rounded-full w-24 h-24 object-cover mx-auto sm:mx-0"
-        />
-      ) : (
-        <div className="w-24 h-24 bg-petrol text-white text-3xl font-bold flex items-center justify-center rounded-full mx-auto sm:mx-0 flex-shrink-0">
-          {initials}
-        </div>
-      )}
+      <div className="w-24 h-24 bg-petrol text-white text-3xl font-bold flex items-center justify-center rounded-full mx-auto sm:mx-0 flex-shrink-0">
+        {initials}
+      </div>
 
       <div className="flex-grow text-center sm:text-left">
         <h3 className="text-xl font-bold text-ink">{doctor.name}</h3>
